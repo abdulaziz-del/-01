@@ -585,7 +585,9 @@ def init_db():
             db.session.commit()
             print("✅ تم إنشاء حساب المدير: admin / admin123")
 
+# يُشغَّل عند بدء التطبيق سواء عبر gunicorn أو مباشرة
+init_db()
+
 if __name__ == '__main__':
-    init_db()
     port = int(os.environ.get('PORT', 5000))
-    app.run(debug=True, host='0.0.0.0', port=port)
+    app.run(debug=False, host='0.0.0.0', port=port)
